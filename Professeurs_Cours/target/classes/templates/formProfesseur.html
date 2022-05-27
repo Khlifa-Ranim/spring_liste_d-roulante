@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<link rel="stylesheet" type="text/css" href="webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+<head>
+	<meta charset="utf-8">
+	<title>Ajout des professeurs</title>
+</head>
+
+<body>
+	<div layout:fragment="Mycontent">
+		<div class="container mt-5">
+			<div class="card">
+				<div class="card">
+				<div class="card-header" th:if="${mode=='new'}">
+					Ajout des professeurs
+				</div>
+				<div class="card-header" th:if="${mode=='edit'}">
+					Modifier des professeurs
+				</div>
+				<div class="card-body">
+					<form th:action="@{saveProfesseur}" method="post">
+					
+						<div class="form-group">
+							<label class="control-label" hidden>ID professeur :</label>
+							<input type="text" hidden  name="idProf" class="form-control" th:value="${professeur.idProf}" />
+						</div>
+
+						<div class="form-group">
+							<label class="control-label">Nom professeur :</label>
+							<input type="text" name="nomProf" class="form-control" th:value="${professeur.nomProf}" />
+							<span th:errors=${professeur.nomProf} class="text-danger" </span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">prenom professeur :</label>
+							<input type="text" name="prenomProf" class="form-control"
+								th:value="${professeur.prenomProf}" />
+							<span th:errors=${professeur.prenomProf} class="text-danger"> </span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">CIN professeur :</label>
+							<input type="number" name="CIN" class="form-control" th:value="${professeur.CIN}" />
+							<span th:errors=${professeur.CIN} class="text-danger"> </span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">Adresse professeur :</label>
+							<input type="text" name="adresse" class="form-control" th:value="${professeur.adresse}" />
+							<span th:errors=${professeur.adresse} class="text-danger"> </span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">date création :</label>
+							<input type="date" name="dateCreation" class="form-control"
+								th:value="${professeur.dateCreation}" />
+							<span th:errors=${professeur.dateCreation} class="text-danger"> </span>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-primary">Ajouter</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

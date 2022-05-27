@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	layout:decorator="template">
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+
+<head>
+	<meta charset="utf-8">
+	<title>Ajout des Professeurs</title>
+</head>
+
+<body>
+	<div layout:fragment="Mycontent">
+		<div class="container mt-5">
+			<div class="card">
+				<div class="card-header">
+					Modifier des Professeurs
+				</div>
+				<div class="card-body">
+					<form th:action="@{saveProfesseur}" method="post">
+						<div class="form-group">
+							<label class="control-label" hidden>ID Professeur :</label>
+							<input type="hidden" name="idProfesseur" class="form-control"
+								th:value="${Professeur.idProfesseur}" />
+						</div>
+						<div class="form-group">
+							<label class="control-label">Nom Professeur :</label>
+							<input type="text" name="nomProf" class="form-control" th:value="${Professeur.nomProf}" />
+							<span th:errors=${Professeur.nomProf} class="text-danger">
+							</span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">prenom Professeur :</label>
+							<input type="text" name="prenomProf" class="form-control"
+								th:value="${Professeur.prenomProf}" />
+							<span th:errors=${Professeur.prenomProf} class="text-danger">
+							</span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">CIN:</label>
+							<input type="number" name="CIN" class="form-control" th:value="${Professeur.CIN}" />
+							<span th:errors=${Professeur.CIN} class="text-danger">
+							</span>
+						</div>
+						<div class="form-group">
+							<label class="control-label"> adresse:</label>
+							<input type="text" name="adresse" class="form-control" th:value="${Professeur.adresse}" />
+							<span th:errors=${Professeur.adresse} class="text-danger">
+							</span>
+						</div>
+						<div class="form-group">
+							<label class="control-label">date création :</label>
+							<input type="date" name="dateCreation" class="form-control"
+								th:value="${Professeur.dateCreation}" />
+							<span th:errors=${Professeur.dateCreation} class="text-danger">
+							</span>
+						</div>
+						<div>
+							<button type="submit" class="btn btn-primary">Valider</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
